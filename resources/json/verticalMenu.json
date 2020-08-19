@@ -1,0 +1,121 @@
+{
+  "menu": [
+    {
+      "url": "/",
+      "name": "Dashboard",
+      "i18n": "Dashboard",
+      "class": "waves-effect waves-cyan",
+      "slug": "dashboard",
+      "icon": "settings_input_svideo",
+      "tagcustom": "badge pill orange float-right mr-10"
+    },
+    {
+      "navheader": "Applications",
+      "icon": "more_horiz"
+    },
+    {
+      "url": "category",
+      "name": "Prize Category",
+      "i18n": "Prize Category",
+      "class": "waves-effect waves-cyan",
+      "icon": "card_giftcard",
+      "slug": "category",
+      "tagcustom": "new badge pill pink accent-2 float-right mr-2"
+    },
+    {
+      "url": "prizes",
+      "name": "Prizes",
+      "i18n": "Prizes",
+      "class": "waves-effect waves-cyan",
+      "icon": "card_giftcard",
+      "slug": "prizes",
+      "tagcustom": "new badge pill pink accent-2 float-right mr-2"
+    },
+    {
+      "url": "challenges",
+      "name": "Challenges",
+      "i18n": "Challenges",
+      "class": "waves-effect waves-cyan",
+      "icon": "question_answer",
+      "slug": "challenges",
+      "tagcustom": "new badge pill pink accent-2 float-right mr-2"
+    },
+    {
+      "url": "competitions",
+      "name": "Competitions",
+      "i18n": "Competitions",
+      "class": "waves-effect waves-cyan",
+      "icon": "insert_drive_file",
+      "slug": "competitions",
+      "tagcustom": "new badge pill pink accent-2 float-right mr-2"
+    },
+    {
+      "url": "reports",
+      "name": "Reports",
+      "i18n": "Reports",
+      "class": "waves-effect waves-cyan",
+      "icon": "insert_drive_file",
+      "slug": "reports",
+      "tagcustom": "new badge pill pink accent-2 float-right mr-2"
+    },
+    {
+      "url": "playerList",
+      "name": "Users",
+      "i18n": "Users",
+      "class": "waves-effect waves-cyan",
+      "icon": "person_outline",
+      "slug": "users",
+      "tagcustom": "new badge pill pink accent-2 float-right mr-2"
+    },
+    {
+      "navheader": "Administration",
+      "icon": "more_horiz"
+    },
+    {
+      "url": "organisations",
+      "name": "Organisations",
+      "i18n": "Organisations",
+      "class": "waves-effect waves-cyan",
+      "icon": "group",
+      "slug": "organisations",
+      "tagcustom": "new badge pill pink accent-2 float-right mr-2"
+    },
+    {
+      "url": "org_admins",
+      "name": "Org Admins",
+      "i18n": "Org_Admins",
+      "class": "waves-effect waves-cyan",
+      "icon": "group_add",
+      "slug": "org_admins",
+      "tagcustom": "new badge pill pink accent-2 float-right mr-2"
+    },
+    {
+      "url": "settings",
+      "name": "Settings",
+      "i18n": "Settings",
+      "class": "waves-effect waves-cyan",
+      "icon": "settings",
+      "slug": "settings",
+      "tagcustom": "new badge pill pink accent-2 float-right mr-2"
+    },
+    {
+      "url": "how_to_play",
+      "name": "How to Play",
+      "i18n": "How_to_Play",
+      "class": "waves-effect waves-cyan",
+      "icon": "info",
+      "slug": "how_to_play",
+      "tagcustom": "new badge pill pink accent-2 float-right mr-2"
+    },
+    {
+      "url": "faqs",
+      "name": "FAQs",
+      "i18n": "FAQs",
+      "class": "waves-effect waves-cyan",
+      "icon": "info",
+      "slug": "faqs",
+      "tagcustom": "new badge pill pink accent-2 float-right mr-2"
+    }
+    
+  ]
+}
