@@ -1,85 +1,58 @@
-{{-- layout --}}
-@extends('layouts.fullLayoutMaster')
+@extends('layouts.auth')
 
-{{-- page title --}}
-@section('title','User Register')
-
-{{-- page style --}}
-@section('page-style')
-<link rel="stylesheet" type="text/css" href="{{asset('css/pages/register.css')}}">
-@endsection
-
-{{-- page content --}}
 @section('content')
-<div id="register-page" class="row">
-  <div class="col s12 m6 l4 z-depth-4 card-panel border-radius-6 register-card bg-opacity-8">
-    <form class="login-form" method="POST" action="{{ route('register') }}">
-      @csrf
-      <div class="row">
-        <div class="input-field col s12">
-          <h5 class="ml-4">Register</h5>
-          <p class="ml-4">Join to our community now !</p>
+<div class="card-body login-card-body">
+    <p class="login-box-msg">{{ __('Register') }}</p>
+
+    <form action="{{ route('register') }}" method="post">
+        @csrf
+        <div class="input-group mb-3">
+            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email">
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-envelope"></span>
+                </div>
+            </div>
+            @error('email')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
         </div>
-      </div>
-      <div class="row margin">
-        <div class="input-field col s12">
-          <i class="material-icons prefix pt-2">person_outline</i>
-          <input id="name" type="text" class="@error('name') is-invalid @enderror" name="name" value="{{ old('name') }}"
-            required autocomplete="name" autofocus>
-          <label for="name" class="center-align">Username</label>
-          @error('name')
-          <small class="red-text ml-10" role="alert">
-            {{ $message }}
-          </small>
-          @enderror
+
+        <div class="input-group mb-3">
+            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password">
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-lock"></span>
+                </div>
+            </div>
+            @error('password')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
         </div>
-      </div>
-      <div class="row margin">
-        <div class="input-field col s12">
-          <i class="material-icons prefix pt-2">mail_outline</i>
-          <input id="email" type="email" class="@error('email') is-invalid @enderror" name="email"
-            value="{{ old('email') }}" required autocomplete="email">
-          <label for="email">Email</label>
-          @error('email')
-          <small class="red-text ml-10" role="alert">
-            {{ $message }}
-          </small>
-          @enderror
+
+        <div class="input-group mb-3">
+            <input type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password">
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-lock"></span>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="row margin">
-        <div class="input-field col s12">
-          <i class="material-icons prefix pt-2">lock_outline</i>
-          <input id="password" type="password" class="@error('password') is-invalid @enderror" name="password" required
-            autocomplete="new-password">
-          <label for="password">Password</label>
-          @error('password')
-          <small class="red-text ml-10" role="alert">
-            {{ $message }}
-          </small>
-          @enderror
+
+        <div class="row">
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary btn-block">{{ __('Register') }}</button>
+            </div>
+            <!-- /.col -->
         </div>
-      </div>
-      <div class="row margin">
-        <div class="input-field col s12">
-          <i class="material-icons prefix pt-2">lock_outline</i>
-          <input id="password-confirm" type="password" name="password_confirmation" required
-            autocomplete="new-password">
-          <label for="password-confirm">Password again</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <button type="submit"
-            class="btn waves-effect waves-light border-round gradient-45deg-purple-deep-orange col s12">Register</button>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <p class="margin medium-small"><a href="{{ route('login')}}">Already have an account? Login</a></p>
-        </div>
-      </div>
     </form>
-  </div>
+
+    <p class="mt-3 mb-1">
+        <a href="{{ route('login') }}">{{ __('Login') }}</a>
+    </p>
 </div>
 @endsection

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -38,26 +39,34 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    // Login
-    public function showLoginForm(){
-       $pageConfigs = ['bodyCustomClass' => 'login-bg', 'isCustomizer' => false];
-  
-        return view('/auth/login', [
-            'pageConfigs' => $pageConfigs
-        ]);
-      }
-      /**
-     * Log the user out of the application.
+    /**
+     * Handle a login request to the application.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Http\JsonResponse
+     *
+     * @throws \Illuminate\Validation\ValidationException
      */
-    public function logout(Request $request)
+    public function login(Request $request)
     {
-        $this->guard()->logout();
-
-        $request->session()->invalidate();
-
-        return $this->loggedOut($request) ?: redirect('/login');
+        $input = $request->all();
+   
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+   
+        if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
+        {
+            if (auth()->user()->is_admin == 'yes') {
+                return redirect()->route('admin.dashboard')->with('success','You are successfully logged in!');
+            } else {
+                return redirect()->route('home')->with('success','You are successfully logged in!');
+            }
+        } 
+        else 
+        {
+            return redirect()->route('login')->with('error','You have entered invalid credentials.');
+        } 
     }
 }

@@ -2,6 +2,14 @@
 
 namespace App\Providers;
 
+use App\Events\ContactMail;
+use App\Events\OrderMail;
+use App\Events\SendEmailVerificationMail;
+use App\Events\SendForgotPasswordMail;
+use App\Listeners\ContactMailFired;
+use App\Listeners\OrderMailFired;
+use App\Listeners\SendEmailVerificationMailFired;
+use App\Listeners\SendForgotPasswordMailFired;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -18,9 +26,22 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-        // 'Illuminate\Auth\Events\Verified' => [
-        //     'App\Listeners\LogVerifiedUser',
-        // ],
+
+        SendEmailVerificationMail::class => [
+            SendEmailVerificationMailFired::class,
+        ],
+
+        SendForgotPasswordMail::class => [
+            SendForgotPasswordMailFired::class,
+        ],
+
+        OrderMail::class => [
+            OrderMailFired::class,
+        ],
+
+        ContactMail::class => [
+            ContactMailFired::class,
+        ],
     ];
 
     /**
@@ -30,8 +51,6 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        parent::boot();
-
         //
     }
 }
